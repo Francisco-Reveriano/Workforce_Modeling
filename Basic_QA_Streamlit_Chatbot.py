@@ -1,4 +1,5 @@
 from src.Agents.Basic_QA_Agent import Basic_QA_Agent
+from src.Agents.GenAI_Use_Case_Agent import GenAI_Use_Case_Agent
 import streamlit as st
 import asyncio
 from agents import Runner, SQLiteSession
@@ -12,6 +13,7 @@ st.title("Basic Q&A Chatbot")
 with st.sidebar:
     st.markdown("Simple Chatbot Connected to OpenAI Assistants")
     st.header("Controls")
+    agent_choice = st.selectbox("Select agent", ["Basic_QA_Agent", "GenAI_Use_Case_Agent"], index=0)
     if st.button("Clear conversation", use_container_width=True):
         st.session_state["messages"] = []
 
@@ -36,7 +38,8 @@ if prompt:
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                result = asyncio.run(Runner.run(Basic_QA_Agent, prompt, session=session))
+                selected_agent = Basic_QA_Agent if agent_choice == "Basic_QA_Agent" else GenAI_Use_Case_Agent
+                result = asyncio.run(Runner.run(selected_agent, prompt, session=session))
                 output_text = getattr(result, "final_output", str(result))
             except Exception as e:
                 output_text = f"Error: {e}"
