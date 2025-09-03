@@ -49,6 +49,7 @@ class Agentic_Calculator_Tool_Output(BaseModel):
 Agentic_Calculator_Tool = Agent(
     name="Agentic_Calculator_Tool",
     instructions=AGENTIC_CALCULATOR_TOOL_PROMPT,
+    output_type=Agentic_Calculator_Tool_Output,
     model=os.getenv("LLM_MODEL"),
     model_settings=ModelSettings(reasoning={"effort": "high"}),
 )
