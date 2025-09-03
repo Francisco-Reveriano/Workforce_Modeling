@@ -22,8 +22,6 @@ Follow the rubric below EXACTLY.
 | **Impact of Error & Risk Severity** | Consequence of a single AI error / hallucination | Catastrophic, irreversible (e.g., wrong multi-billion trade) | Significant financial or reputational impact, hard to correct | Moderate impact, correctable with effort & cost (e.g., wrong loan estimate) | Minor impact, easily correctable, low cost | Low impact, quickly correctable, minimal consequence (e.g., typo in draft email) |
 
 ---
-
-
 ## 2. Scoring & Reasoning Procedure  
 
 1. **Understand** Thoroughly understand the question and process the user is providing. 

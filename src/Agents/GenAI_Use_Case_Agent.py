@@ -3,9 +3,7 @@ import os
 from openai import OpenAI
 from agents import Agent, FileSearchTool, Runner, trace
 from IPython.display import display, Markdown
-from dotenv import load_dotenv
 from agents.model_settings import ModelSettings
-load_dotenv()
 
 # Import Necessary Libraries
 from src.Tools.Agentic_Calculator_Tool import Agentic_Calculator_Tool
@@ -36,10 +34,11 @@ Follow this structured reasoning process step by step (Chain-of-Thought):
 4. **Synthesize Findings**
    - Combine evidence from the knowledge base and the calculator tool.
    - Provide:
-     - A final **appropriateness score** (e.g., scale 1–10).
+     - A final **appropriateness score** that **MUST** be directly from <Agentic_Calculator_Tool> with a value from 0 - 5. 
+     - **Summary**: Provide a concise summary of the use case and its potential impact.
      - **Reasoning**: Explain why Generative AI is (or is not) a good fit, referencing retrieved knowledge and calculated metrics.
      - **Use Case Examples**: Suggest specific applications of Generative AI relevant to the business activity.
-     - **Citations**: Include references to the documents retrieved.
+     - **Citations**: Include the exact titles and sources of all sources used.
 
 # Tools
 1. <Agentic_Calculator_Tool>: Quantifies the appropriateness of Generative AI for a specific business activity.
@@ -47,7 +46,8 @@ Follow this structured reasoning process step by step (Chain-of-Thought):
 
 # Output Format
 Your response must include:
-- **Score:** [Numeric evaluation]
+- **Score:** [Numeric evaluation from <Agentic_Calculator_Tool>]
+- **Summary:** [Concise summary of the use case and its potential impact]
 - **Reasoning:** [Step-by-step explanation]
 - **Examples:** [Relevant applied use cases]
 - **Citations:** [List of sources]
