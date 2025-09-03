@@ -1,8 +1,24 @@
-from src.Agents.Basic_QA_Agent import Basic_QA_Agent
-from src.Agents.GenAI_Use_Case_Agent import GenAI_Use_Case_Agent
+# Import Libraries
+from galileo import GalileoLogger
+from galileo.handlers.openai_agents import GalileoTracingProcessor
+from agents import set_trace_processors
 import streamlit as st
 import asyncio
 from agents import Runner, SQLiteSession
+import os
+import toml
+import warnings
+warnings.filterwarnings("ignore")
+
+# Setup environment
+secrets = toml.load(".streamlit/secrets.toml")
+for key, value in secrets.items():
+    os.environ[key] = str(value)
+
+# Import Agents
+set_trace_processors([GalileoTracingProcessor()])
+from src.Agents.Basic_QA_Agent import Basic_QA_Agent
+from src.Agents.GenAI_Use_Case_Agent import GenAI_Use_Case_Agent
 
 session = SQLiteSession("user_123")
 
