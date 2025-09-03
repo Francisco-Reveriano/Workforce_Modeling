@@ -23,12 +23,12 @@ from src.Agents.GenAI_Use_Case_Agent import GenAI_Use_Case_Agent
 
 session = SQLiteSession("user_123")
 
-st.set_page_config(page_title="Basic Q&A Chatbot", page_icon="❓", layout="centered")
-st.title("Basic Q&A Chatbot")
+st.set_page_config(page_title="Workforce_Planning_Agent", page_icon="❓", layout="centered")
+st.title("Workforce_Planning_Agent")
 
 # Sidebar controls
 with st.sidebar:
-    st.markdown("Simple Chatbot Connected to OpenAI Assistants")
+    st.markdown("Workforce Planning Agents")
     st.header("Controls")
     agent_choice = st.selectbox("Select agent", ["GenAI_Use_Case_Agent", "Basic_QA_Agent"], index=0)
     if st.button("Clear conversation", use_container_width=True):
